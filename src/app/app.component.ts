@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component }    from '@angular/core';
+import { ThemeService } from './services';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,8 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'Rates Notifier';
+
+  constructor(private readonly _themeService: ThemeService) { }
+
+  get currentTheme() { return this._themeService.currentTheme; }
 }

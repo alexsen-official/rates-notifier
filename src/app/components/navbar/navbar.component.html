@@ -1,0 +1,40 @@
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <a mat-button routerLink="/">
+      <mat-icon>notifications_active</mat-icon>
+      {{ title }}
+    </a>
+
+    <div>
+      <ng-container *ngIf="token; else unauthorized">
+        <button mat-button [matMenuTriggerFor]="menu">
+          <mat-icon inline>keyboard_arrow_down</mat-icon>
+          Welcome, {{ token.name }}
+        </button>
+
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item (click)="logoutUser()">
+            <mat-icon>meeting_room</mat-icon>
+            Logout
+          </button>
+        </mat-menu>
+      </ng-container>
+
+      <ng-template #unauthorized>
+        <a mat-button routerLink="/login" routerLinkActive="mat-flat-button">
+          <mat-icon>exit_to_app</mat-icon>
+          Login
+        </a>
+
+        <a mat-button routerLink="/register" routerLinkActive="mat-flat-button">
+          <mat-icon>person_add</mat-icon>
+          Register
+        </a>
+      </ng-template>
+
+      <button mat-icon-button matTooltip="Use {{ oppositeTheme }} theme" (click)="reverseTheme()">
+        <mat-icon>{{ oppositeTheme === 'light' ? 'wb_sunny' : 'brightness_2' }}</mat-icon>
+      </button>
+    </div>
+  </mat-toolbar-row>
+</mat-toolbar>

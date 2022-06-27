@@ -1,0 +1,41 @@
+<div class="container">
+  <mat-card>
+    <mat-card-title>Login</mat-card-title>
+
+    <mat-card-subtitle>
+      Don't have an account?
+      <a routerLink="/register"><b>Register!</b></a>
+    </mat-card-subtitle>
+
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+      <mat-form-field appearance="outline">
+        <mat-label>Email</mat-label>
+        <input matInput type="email" [formControl]="email">
+
+        <mat-icon matPrefix>email</mat-icon>
+        <mat-error>{{ getError(email, 'Email') }}</mat-error>
+      </mat-form-field>
+
+      <app-password [control]="password"></app-password>
+
+      <div class="button-group">
+        <div [matTooltip]="form.invalid ? 'Fill in all required fields!' : ''">
+          <button mat-flat-button color="primary" type="submit"
+                  [disabled]="form.invalid || form.disabled">
+            <mat-icon inline>check</mat-icon>
+            Submit
+          </button>
+        </div>
+
+        <button mat-flat-button color="warn" type="reset" [disabled]="form.disabled">
+          <mat-icon inline>close</mat-icon>
+          Reset
+        </button>
+      </div>
+    </form>
+
+    <mat-card-footer *ngIf="form.disabled">
+      <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+    </mat-card-footer>
+  </mat-card>
+</div>

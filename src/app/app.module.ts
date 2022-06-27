@@ -1,18 +1,72 @@
-import { NgModule }         from '@angular/core';
-import { BrowserModule }    from '@angular/platform-browser';
+import { HttpClientModule }    from '@angular/common/http';
+import { NgModule }            from '@angular/core';
+import { ReactiveFormsModule } from '@angular/forms';
+
+import { MatButtonModule }      from '@angular/material/button';
+import { MatCardModule }        from '@angular/material/card';
+import { MatFormFieldModule }   from '@angular/material/form-field';
+import { MatIconModule }        from '@angular/material/icon';
+import { MatInputModule }       from '@angular/material/input';
+import { MatMenuModule }        from '@angular/material/menu';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { MatSnackBarModule }    from '@angular/material/snack-bar';
+import { MatToolbarModule }     from '@angular/material/toolbar';
+import { MatTooltipModule }     from '@angular/material/tooltip';
+
+import { BrowserModule }           from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
-import { AppComponent }     from './app.component';
+
+import {
+  AppComponent,
+  LoginComponent,
+  NavbarComponent,
+  RegisterComponent,
+  PasswordComponent
+} from './components';
+
+import {
+  SnackbarService,
+  ThemeService,
+  UserService,
+  ValidationService
+} from './services';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    LoginComponent,
+    NavbarComponent,
+    RegisterComponent,
+    PasswordComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule
+    imports: [
+        HttpClientModule,
+        ReactiveFormsModule,
+
+        MatButtonModule,
+        MatCardModule,
+        MatFormFieldModule,
+        MatIconModule,
+        MatInputModule,
+        MatMenuModule,
+        MatProgressBarModule,
+        MatSnackBarModule,
+        MatToolbarModule,
+        MatTooltipModule,
+
+        BrowserModule,
+        BrowserAnimationsModule,
+
+        AppRoutingModule
+    ],
+  providers: [
+    SnackbarService,
+    ThemeService,
+    UserService,
+    ValidationService
   ],
-  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

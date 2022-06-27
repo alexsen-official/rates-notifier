@@ -1,0 +1,65 @@
+@import './themes';
+@import './mixins';
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, 'Helvetica Neue', sans-serif;
+}
+
+html, body {
+  height: 100%;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+.button-group {
+  display: flex;
+  gap: 1rem;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+
+  .mat-card {
+    width: 100%;
+    box-sizing: border-box;
+
+    @include xs {
+      width: 62.5%;
+    }
+
+    @include sm {
+      width: 50%;
+    }
+    @include md {
+      width: 37.5%;
+    }
+    @include lg {
+      width: 25%;
+    }
+  }
+}
+
+.mat-button-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.mat-card-footer {
+  margin-top: 1rem;
+}
