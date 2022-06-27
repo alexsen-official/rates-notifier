@@ -1,4 +1,4 @@
+/node_modules
 .gcloudignore
 .git
 .gitignore
-node_modules/
