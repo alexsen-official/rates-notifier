@@ -9,7 +9,7 @@ import { ThemeService } from './services';
 export class AppComponent {
   title = 'Rates Notifier';
 
-  constructor(private readonly _themeService: ThemeService) { }
+  constructor(private readonly _theme: ThemeService) { }
 
-  get currentTheme() { return this._themeService.currentTheme; }
+  get currentTheme() { return this._theme.currentTheme; }
 }

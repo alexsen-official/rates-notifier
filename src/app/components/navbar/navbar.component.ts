@@ -14,17 +14,18 @@ import {
 export class NavbarComponent {
   @Input() title!: string;
 
-  constructor(private readonly _snackbarService: SnackbarService,
-              private readonly _themeService: ThemeService,
-              private readonly _userService: UserService) { }
+  constructor(private readonly _snackbar: SnackbarService,
+              private readonly _theme  : ThemeService,
+              private readonly _user   : UserService) { }
 
-  get oppositeTheme() { return this._themeService.oppositeTheme; }
-  get token()         { return this._userService.token;}
+  get oppositeTheme() { return this._theme.oppositeTheme; }
+  get token()         { return this._user.token;          }
 
-  reverseTheme = () => this._themeService.reverseTheme();
+  reverseTheme = () =>
+    this._theme.reverseTheme();
 
   logoutUser() {
-    this._userService.logout();
-    this._snackbarService.open('You have successfully logged out!');
+    this._user.logout();
+    this._snackbar.open('You have successfully logged out!');
   }
 }

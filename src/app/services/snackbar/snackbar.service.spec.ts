@@ -5,7 +5,7 @@ describe('SnackbarService', () => {
   let service: SnackbarService;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({});
+    TestBed.configureTestingModule({ });
     service = TestBed.inject(SnackbarService);
   });
 

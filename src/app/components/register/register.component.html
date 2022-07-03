@@ -1,10 +1,10 @@
 <div class="container">
-  <mat-card>
+  <mat-card class="form-card">
     <mat-card-title>Register</mat-card-title>
 
     <mat-card-subtitle>
       Already have an account?
-      <a routerLink="/login"><b>Login!</b></a>
+      <a routerLink="/login">Login!</a>
     </mat-card-subtitle>
 
     <form [formGroup]="form" (ngSubmit)="onSubmit()">
@@ -45,7 +45,8 @@
           </button>
         </div>
 
-        <button mat-flat-button color="warn" type="reset" [disabled]="form.disabled">
+        <button mat-flat-button color="warn" type="reset"
+                [disabled]="form.disabled">
           <mat-icon inline>close</mat-icon>
           Reset
         </button>

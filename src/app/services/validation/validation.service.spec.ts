@@ -5,7 +5,7 @@ describe('ValidationService', () => {
   let service: ValidationService;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({});
+    TestBed.configureTestingModule({ });
     service = TestBed.inject(ValidationService);
   });
 

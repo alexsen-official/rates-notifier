@@ -46,9 +46,7 @@ export class RegisterComponent {
 
     email: [null, [
       Validators.required,
-      Validators.email,
-      Validators.minLength(3),
-      Validators.maxLength(254)
+      Validators.email
     ]],
 
     password: [null, [
@@ -62,10 +60,10 @@ export class RegisterComponent {
   });
 
   constructor(private readonly _formBuilder: FormBuilder,
-              private readonly _router: Router,
-              private readonly _snackbar: SnackbarService,
-              private readonly _userService: UserService,
-              private readonly _validationService: ValidationService) { }
+              private readonly _router     : Router,
+              private readonly _snackbar   : SnackbarService,
+              private readonly _user       : UserService,
+              private readonly _validation : ValidationService) { }
 
   get name()     { return this.form.get('name')     as FormControl; }
   get tel()      { return this.form.get('tel')      as FormControl; }
@@ -76,7 +74,7 @@ export class RegisterComponent {
     if (this.form.valid) {
       this.form.disable();
 
-      this._userService
+      this._user
           .create(this.form.value)
           .subscribe({
             next: () => {
@@ -84,16 +82,15 @@ export class RegisterComponent {
               this._router.navigate(['/login']).then();
               this._snackbar.open('You have successfully registered!');
             },
-            error: error => {
+            error: err => {
               this.form.enable();
               this._snackbar.open('The user already exists!');
-              console.error(error);
+              console.error(err);
             }
           });
     }
   }
 
-  getError(control: FormControl, label: string) {
-    return this._validationService.getError(control, label);
-  }
+  getError = (control: FormControl, label: string) =>
+    this._validation.getError(control, label);
 }

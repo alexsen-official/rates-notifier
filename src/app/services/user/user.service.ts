@@ -10,26 +10,26 @@ import { IUser }       from '../../interfaces';
 export class UserService {
   readonly apiUrl = environment.apiUrl;
 
-  constructor(private readonly http: HttpClient) { }
+  constructor(private readonly _http: HttpClient) { }
 
   get token() {
     return JSON.parse(localStorage.getItem('token') || 'null') as IUser;
   }
 
   get(id: string) {
-    return this.http.get<IUser>(`${ this.apiUrl }/users/${ id }`);
+    return this._http.get<IUser>(`${ this.apiUrl }/users/${ id }`);
   }
 
   getAll() {
-    return this.http.get<IUser[]>(`${ this.apiUrl }/users`);
+    return this._http.get<IUser[]>(`${ this.apiUrl }/users`);
   }
 
   create(user: IUser) {
-    return this.http.post<IUser>(`${ this.apiUrl }/users`, user);
+    return this._http.post<IUser>(`${ this.apiUrl }/users`, user);
   }
 
   login(user: IUser) {
-    return this.http
+    return this._http
                .post<IUser>(`${ this.apiUrl }/users/login`, user)
                .pipe(map(user =>
                  localStorage.setItem('token', JSON.stringify(user))
@@ -41,10 +41,10 @@ export class UserService {
   }
 
   update(user: IUser) {
-    return this.http.put<IUser>(`${ this.apiUrl }/users`, user);
+    return this._http.put<IUser>(`${ this.apiUrl }/users`, user);
   }
 
   delete(id: string) {
-    return this.http.delete<IUser>(`${ this.apiUrl }/users/${ id }`);
+    return this._http.delete<IUser>(`${ this.apiUrl }/users/${ id }`);
   }
 }

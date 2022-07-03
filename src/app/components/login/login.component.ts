@@ -29,9 +29,7 @@ export class LoginComponent {
   readonly form = this._formBuilder.group({
     email: [null, [
       Validators.required,
-      Validators.email,
-      Validators.minLength(3),
-      Validators.maxLength(254)
+      Validators.email
     ]],
 
     password: [null, [
@@ -45,10 +43,10 @@ export class LoginComponent {
   });
 
   constructor(private readonly _formBuilder: FormBuilder,
-              private readonly _router: Router,
-              private readonly _snackbar: SnackbarService,
-              private readonly _userService: UserService,
-              private readonly _validationService: ValidationService) { }
+              private readonly _router     : Router,
+              private readonly _snackbar   : SnackbarService,
+              private readonly _user       : UserService,
+              private readonly _validation : ValidationService) { }
 
   get email()    { return this.form.get('email')    as FormControl; }
   get password() { return this.form.get('password') as FormControl; }
@@ -57,7 +55,7 @@ export class LoginComponent {
     if (this.form.valid) {
       this.form.disable();
 
-      this._userService
+      this._user
           .login(this.form.value)
           .subscribe({
             next: () => {
@@ -65,16 +63,15 @@ export class LoginComponent {
               this._router.navigate(['/']).then();
               this._snackbar.open('You have successfully logged in!');
             },
-            error: error => {
+            error: err => {
               this.form.enable();
               this._snackbar.open('Invalid email or password!');
-              console.error(error);
+              console.error(err);
             }
           });
     }
   }
 
-  getError(control: FormControl, label: string) {
-    return this._validationService.getError(control, label);
-  }
+  getError = (control: FormControl, label: string) =>
+    this._validation.getError(control, label);
 }

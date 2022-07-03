@@ -12,9 +12,8 @@ export class PasswordComponent {
 
   isHidden = true;
 
-  constructor(private readonly _validationService: ValidationService) { }
+  constructor(private readonly _validation: ValidationService) { }
 
-  get error() {
-    return this._validationService.getError(this.control, 'Password');
-  }
+  getError = () =>
+    this._validation.getError(this.control, 'Password');
 }

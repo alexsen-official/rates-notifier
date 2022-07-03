@@ -3,9 +3,9 @@ import { LoginComponent }            from './login.component';
 
 describe('LoginComponent', () => {
   let component: LoginComponent;
-  let fixture: ComponentFixture<LoginComponent>;
+  let fixture  : ComponentFixture<LoginComponent>;
 
-  beforeEach(async() => {
+  beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [LoginComponent]
     }).compileComponents();

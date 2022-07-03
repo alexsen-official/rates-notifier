@@ -1,0 +1,41 @@
+.table-container {
+  height: calc(100vh - 17.25rem);
+  margin: 0 -1rem;
+  overflow: auto;
+
+  > table {
+    width: 100%;
+  }
+}
+
+.loading-shade {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.15);
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  > .mat-spinner {
+    transform: scale(0.75);
+  }
+}
+
+.mat-header-cell {
+  padding-right: 1rem;
+}
+
+:host::ng-deep {
+  .mat-paginator-container {
+    justify-content: center;
+  }
+
+  .mat-paginator-page-size {
+    display: none;
+  }
+
+  .mat-paginator-range-label {
+    display: none;
+  }
+}

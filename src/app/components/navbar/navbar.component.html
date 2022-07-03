@@ -1,6 +1,7 @@
 <mat-toolbar color="primary">
   <mat-toolbar-row>
-    <a mat-button routerLink="/">
+    <a mat-button routerLink="/" routerLinkActive="mat-flat-button"
+       [routerLinkActiveOptions]="{ exact: true }">
       <mat-icon>notifications_active</mat-icon>
       {{ title }}
     </a>
