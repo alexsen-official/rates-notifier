@@ -1,13 +1,11 @@
 require('dotenv').config();
 
-const express = require('express'),
+const app = require('express')(),
       mongoose = require('mongoose'),
     
-      cors = require('cors'),
       parser = require('body-parser'),
       routers = require('./routers'),
     
-      app = express(),
       PORT = process.env.PORT || 3000;
 
 mongoose.connect(process.env.CONNECTION_STRING, {
@@ -18,13 +16,15 @@ mongoose.connect(process.env.CONNECTION_STRING, {
     console.log('Successfully connected to MongoDB!');
 });
 
-app.use(cors());
+app.use(require('cors')());
+
 app.use(parser.json());
 app.use(parser.urlencoded({ extended: true }));
 
 app.use('/users', routers.UserRouter);
+app.use('/rates', routers.RateRouter);
 
-app.listen(PORT,  err => {
+app.listen(PORT, err => {
     if (err) throw err;
     console.log(`Server successfully started on port ${ PORT }!`);
 });
