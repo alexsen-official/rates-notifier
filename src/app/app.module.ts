@@ -11,6 +11,7 @@ import { MatMenuModule }            from '@angular/material/menu';
 import { MatPaginatorModule }       from '@angular/material/paginator';
 import { MatProgressBarModule }     from '@angular/material/progress-bar';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatSidenavModule }         from '@angular/material/sidenav';
 import { MatSnackBarModule }        from '@angular/material/snack-bar';
 import { MatTableModule }           from '@angular/material/table';
 import { MatToolbarModule }         from '@angular/material/toolbar';
@@ -27,7 +28,8 @@ import {
   NavbarComponent,
   PasswordComponent,
   RegisterComponent,
-  RateTableComponent
+  RateTableComponent,
+  SidebarComponent
 } from './components';
 
 import {
@@ -45,31 +47,33 @@ import {
     NavbarComponent,
     PasswordComponent,
     RegisterComponent,
-    RateTableComponent
+    RateTableComponent,
+    SidebarComponent
   ],
-    imports: [
-        HttpClientModule,
-        ReactiveFormsModule,
+  imports: [
+    HttpClientModule,
+    ReactiveFormsModule,
 
-        MatButtonModule,
-        MatCardModule,
-        MatFormFieldModule,
-        MatIconModule,
-        MatInputModule,
-        MatMenuModule,
-        MatPaginatorModule,
-        MatProgressBarModule,
-        MatProgressSpinnerModule,
-        MatSnackBarModule,
-        MatTableModule,
-        MatToolbarModule,
-        MatTooltipModule,
+    MatButtonModule,
+    MatCardModule,
+    MatFormFieldModule,
+    MatIconModule,
+    MatInputModule,
+    MatMenuModule,
+    MatPaginatorModule,
+    MatProgressBarModule,
+    MatProgressSpinnerModule,
+    MatSidenavModule,
+    MatSnackBarModule,
+    MatTableModule,
+    MatToolbarModule,
+    MatTooltipModule,
 
-        BrowserModule,
-        BrowserAnimationsModule,
+    BrowserModule,
+    BrowserAnimationsModule,
 
-        AppRoutingModule
-    ],
+    AppRoutingModule
+  ],
   providers: [
     RateService,
     SnackbarService,

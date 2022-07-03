@@ -1,4 +1,9 @@
-import { Component, Input } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  Output
+} from '@angular/core';
 
 import {
   SnackbarService,
@@ -13,6 +18,7 @@ import {
 })
 export class NavbarComponent {
   @Input() title!: string;
+  @Output() drawerToggle = new EventEmitter();
 
   constructor(private readonly _snackbar: SnackbarService,
               private readonly _theme  : ThemeService,

@@ -1,5 +1,15 @@
-<app-navbar [title]="title"></app-navbar>
+<mat-drawer-container>
+  <mat-drawer #drawer>
+    <app-sidebar></app-sidebar>
+  </mat-drawer>
 
-<main class="{{ currentTheme }} mat-app-background">
-  <router-outlet></router-outlet>
-</main>
+  <mat-drawer-content>
+    <app-navbar [title]="title"
+                (drawerToggle)="drawer.toggle()">
+    </app-navbar>
+
+    <main class="{{ currentTheme }} mat-app-background">
+      <router-outlet></router-outlet>
+    </main>
+  </mat-drawer-content>
+</mat-drawer-container>

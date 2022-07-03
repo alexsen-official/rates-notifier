@@ -1,3 +1,5 @@
+@import '../../../mixins';
+
 .mat-toolbar-row {
   justify-content: space-between;
   align-items: center;
@@ -6,5 +8,20 @@
   > div {
     display: flex;
     gap: 0.5rem;
+  }
+}
+
+.xs-flex {
+  display: none;
+  gap: 0.5rem;
+
+  @include xs {
+    display: flex;
+  }
+}
+
+.xs-none {
+  @include xs {
+    display: none;
   }
 }
