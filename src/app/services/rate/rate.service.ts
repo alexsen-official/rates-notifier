@@ -1,17 +1,23 @@
-import { HttpClient }  from '@angular/common/http';
-import { Injectable }  from '@angular/core';
-import { environment } from '../../../environments/environment';
-import { IRate }       from '../../interfaces';
+import { Injectable }     from '@angular/core';
+import { IRate }          from '../../interfaces';
+import { RequestService } from '../../services';
 
 @Injectable({
   providedIn: 'root'
 })
 export class RateService {
-  readonly apiUrl = environment.apiUrl;
+  constructor(private readonly _request: RequestService) { }
 
-  constructor(private readonly _http: HttpClient) { }
+  getByPage(page: number) {
+    return this._request.get<IRate[]>(`rates/page/${ page }`);
+  }
 
-  get(page: number) {
-    return this._http.get<IRate[]>(`${ this.apiUrl }/rates/${ page }`);
+  getByYear(year: number) {
+    return this._request.get<IRate[]>(`rates/year/${ year }`);
+  }
+
+  getByDate(date: Date) {
+    const month = `0${ date.getMonth() + 1 }`.slice(-2);
+    return this._request.get<IRate[]>(`rates/date/${ date.getFullYear() }${ month }`);
   }
 }

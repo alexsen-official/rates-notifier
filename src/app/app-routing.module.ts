@@ -4,14 +4,17 @@ import { RouterModule, Routes } from '@angular/router';
 import {
   LoginComponent,
   RegisterComponent,
-  RateTableComponent
+  RateTableComponent,
+  SubscriptionComponent
 } from './components';
 
 const routes: Routes = [
-  { path: '',          component: RateTableComponent },
-  { path: 'login',     component: LoginComponent     },
-  { path: 'register',  component: RegisterComponent  },
-  { path: '**',        component: RateTableComponent }
+  { path: '',          component: RateTableComponent    },
+  { path: 'login',     component: LoginComponent        },
+  { path: 'register',  component: RegisterComponent     },
+  { path: 'subscribe', component: SubscriptionComponent },
+
+  { path: '**', redirectTo: '' }
 ];
 
 @NgModule({

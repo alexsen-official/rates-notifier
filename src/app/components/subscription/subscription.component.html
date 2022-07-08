@@ -1,0 +1,26 @@
+<div class="container">
+  <mat-card class="form-card">
+    <mat-card-title>Subscribe</mat-card-title>
+
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+      <mat-button-toggle-group name="fRate" [formControl]="fRate">
+        <mat-button-toggle *ngFor="let col of cols; let i = index" [value]="i">
+          {{ col }}
+        </mat-button-toggle>
+      </mat-button-toggle-group>
+
+      <mat-button-toggle-group name="sRate" [formControl]="sRate">
+        <mat-button-toggle #sRateToggle *ngFor="let col of cols; let i = index" [value]="i"
+                           [disabled]="fRate.value >= sRateToggle.value">
+          {{ col }}
+        </mat-button-toggle>
+      </mat-button-toggle-group>
+
+      <app-form-actions [form]="form"></app-form-actions>
+    </form>
+
+    <mat-card-footer *ngIf="form.disabled">
+      <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+    </mat-card-footer>
+  </mat-card>
+</div>

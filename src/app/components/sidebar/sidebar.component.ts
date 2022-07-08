@@ -7,7 +7,7 @@ import { SnackbarService, UserService } from '../../services';
   styleUrls: ['./sidebar.component.scss']
 })
 export class SidebarComponent {
-  constructor(private readonly _user: UserService,
+  constructor(private readonly _user    : UserService,
               private readonly _snackBar: SnackbarService) { }
 
   get token() { return this._user.token; }

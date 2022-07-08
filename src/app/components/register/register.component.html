@@ -10,7 +10,7 @@
     <form [formGroup]="form" (ngSubmit)="onSubmit()">
       <mat-form-field appearance="outline">
         <mat-label>Name</mat-label>
-        <input matInput type="text" [formControl]="name">
+        <input matInput type="text" [formControl]="name"/>
 
         <mat-icon matPrefix>account_circle</mat-icon>
         <mat-error>{{ getError(name, 'Name') }}</mat-error>
@@ -19,38 +19,16 @@
       </mat-form-field>
 
       <mat-form-field appearance="outline">
-        <mat-label>Email</mat-label>
-        <input matInput type="email" [formControl]="email">
-
-        <mat-icon matPrefix>email</mat-icon>
-        <mat-error>{{ getError(email, 'Email') }}</mat-error>
-      </mat-form-field>
-
-      <mat-form-field appearance="outline">
         <mat-label>Phone</mat-label>
-        <input matInput type="tel" [formControl]="tel">
+        <input matInput type="tel" [formControl]="tel"/>
 
         <mat-icon matPrefix>phone</mat-icon>
         <mat-error>{{ getError(tel, 'Phone number') }}</mat-error>
       </mat-form-field>
 
+      <app-email [control]="email"></app-email>
       <app-password [control]="password"></app-password>
-
-      <div class="button-group">
-        <div [matTooltip]="form.invalid ? 'Fill in all required fields!' : ''">
-          <button mat-flat-button color="primary" type="submit"
-                  [disabled]="form.invalid || form.disabled">
-            <mat-icon inline>check</mat-icon>
-            Submit
-          </button>
-        </div>
-
-        <button mat-flat-button color="warn" type="reset"
-                [disabled]="form.disabled">
-          <mat-icon inline>close</mat-icon>
-          Reset
-        </button>
-      </div>
+      <app-form-actions [form]="form"></app-form-actions>
     </form>
 
     <mat-card-footer *ngIf="form.disabled">

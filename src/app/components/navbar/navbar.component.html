@@ -13,7 +13,7 @@
     </a>
 
     <div>
-      <div class="xs-flex">
+      <nav class="xs-flex">
         <ng-container *ngIf="token; else unauthorized">
           <button mat-button [matMenuTriggerFor]="menu">
             <mat-icon inline>keyboard_arrow_down</mat-icon>
@@ -41,7 +41,7 @@
             Register
           </a>
         </ng-template>
-      </div>
+      </nav>
 
       <button mat-icon-button
               matTooltip="Use {{ oppositeTheme }} theme"

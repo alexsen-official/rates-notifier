@@ -1,36 +1,18 @@
-import { Component } from '@angular/core';
-
-import {
-  FormBuilder,
-  FormControl,
-  Validators
-} from '@angular/forms';
-
-import { Router } from '@angular/router';
-
-import {
-  SnackbarService,
-  UserService,
-  ValidationService
-} from '../../services';
-
-import {
-  hasLowercaseValidator,
-  hasNumericValidator,
-  hasUppercaseValidator,
-  lettersOnlyValidator,
-  numericOnlyValidator
-} from '../../validators';
+import { Component, OnInit }                               from '@angular/core';
+import { FormBuilder, FormControl, Validators }            from '@angular/forms';
+import { Router }                                          from '@angular/router';
+import { SnackbarService, UserService, ValidationService } from '../../services';
+import { lettersOnlyValidator, numericOnlyValidator }      from '../../validators';
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.scss']
 })
-export class RegisterComponent {
+export class RegisterComponent implements OnInit {
   readonly maxNameLength = 128;
 
-  readonly form = this._formBuilder.group({
+  readonly form = this._builder.group({
     name: [null, [
       Validators.required,
       Validators.minLength(5),
@@ -44,31 +26,27 @@ export class RegisterComponent {
       numericOnlyValidator()
     ]],
 
-    email: [null, [
-      Validators.required,
-      Validators.email
-    ]],
-
-    password: [null, [
-      Validators.required,
-      Validators.minLength(8),
-      Validators.maxLength(32),
-      hasUppercaseValidator(),
-      hasLowercaseValidator(),
-      hasNumericValidator()
-    ]]
+    email   : [null, []],
+    password: [null, []]
   });
 
-  constructor(private readonly _formBuilder: FormBuilder,
-              private readonly _router     : Router,
-              private readonly _snackbar   : SnackbarService,
-              private readonly _user       : UserService,
-              private readonly _validation : ValidationService) { }
+  constructor(private readonly _builder   : FormBuilder,
+              private readonly _router    : Router,
+              private readonly _snackbar  : SnackbarService,
+              private readonly _user      : UserService,
+              private readonly _validation: ValidationService) { }
 
   get name()     { return this.form.get('name')     as FormControl; }
   get tel()      { return this.form.get('tel')      as FormControl; }
   get email()    { return this.form.get('email')    as FormControl; }
   get password() { return this.form.get('password') as FormControl; }
+
+  ngOnInit() {
+    if (this._user.token) {
+      this._router.navigate(['/']).then();
+      this._snackbar.open('You are already registered!');
+    }
+  }
 
   onSubmit() {
     if (this.form.valid) {

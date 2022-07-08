@@ -13,7 +13,7 @@ export class ThemeService {
   private _currentTheme  = Theme.light;
   private _oppositeTheme = Theme.dark;
 
-  constructor(private readonly _overlayContainer: OverlayContainer) {
+  constructor(private readonly _overlay: OverlayContainer) {
     const savedTheme = localStorage.getItem('theme');
 
     if (savedTheme)
@@ -39,10 +39,10 @@ export class ThemeService {
   reverseTheme() { this.currentTheme = this.oppositeTheme; }
 
   matchOverlays() {
-    const containerElement = this._overlayContainer.getContainerElement();
+    const container = this._overlay.getContainerElement();
 
-    containerElement.addEventListener('DOMNodeInserted', () =>
-      containerElement.classList.add(this.currentTheme)
+    container.addEventListener('DOMNodeInserted', () =>
+      container.classList.add(this.currentTheme)
     );
   }
 }

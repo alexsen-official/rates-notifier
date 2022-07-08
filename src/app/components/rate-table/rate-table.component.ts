@@ -1,23 +1,12 @@
-import {
-  AfterViewInit,
-  Component,
-  ViewChild
-} from '@angular/core';
-
-import { MatPaginator } from '@angular/material/paginator';
-
-import {
-  map,
-  startWith,
-  switchMap
-} from 'rxjs/operators';
-
-import { IRate }       from '../../interfaces';
-import { RateService } from '../../services';
+import { AfterViewInit, Component, ViewChild } from '@angular/core';
+import { MatPaginator }                        from '@angular/material/paginator';
+import { map, startWith, switchMap }           from 'rxjs/operators';
+import { IRate }                               from '../../interfaces';
+import { RateService, UserService }            from '../../services';
 
 @Component({
   selector: 'app-rate-table',
-  styleUrls: [ 'rate-table.component.scss' ],
+  styleUrls: ['rate-table.component.scss'],
   templateUrl: 'rate-table.component.html'
 })
 export class RateTableComponent implements AfterViewInit {
@@ -28,14 +17,17 @@ export class RateTableComponent implements AfterViewInit {
 
   isLoading = true;
 
-  constructor(private readonly _rate: RateService) { }
+  constructor(private readonly _rate: RateService,
+              private readonly _user: UserService) { }
+
+  get token() { return this._user.token; }
 
   ngAfterViewInit() {
     this.paginator.page.pipe(
       startWith({}),
       switchMap(() => {
         this.isLoading = true;
-        return this._rate.get(this.paginator.pageIndex);
+        return this._rate.getByPage(this.paginator.pageIndex);
       }),
       map(rates => {
         this.isLoading = false;
@@ -51,7 +43,8 @@ export class RateTableComponent implements AfterViewInit {
             this.paginator.length = rates.length;
             this.paginator.lastPage();
           }
-        }, error: error => console.error(error)
+        },
+        error: err => console.error(err)
       });
   }
 }

@@ -3,6 +3,7 @@ import { NgModule }            from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 
 import { MatButtonModule }          from '@angular/material/button';
+import { MatButtonToggleModule }    from '@angular/material/button-toggle';
 import { MatCardModule }            from '@angular/material/card';
 import { MatFormFieldModule }       from '@angular/material/form-field';
 import { MatIconModule }            from '@angular/material/icon';
@@ -24,17 +25,22 @@ import { AppRoutingModule } from './app-routing.module';
 
 import {
   AppComponent,
+  EmailComponent,
+  FormActionsComponent,
   LoginComponent,
   NavbarComponent,
   PasswordComponent,
-  RegisterComponent,
   RateTableComponent,
-  SidebarComponent
+  RegisterComponent,
+  SidebarComponent,
+  SubscriptionComponent
 } from './components';
 
 import {
   RateService,
+  RequestService,
   SnackbarService,
+  SubscriptionService,
   ThemeService,
   UserService,
   ValidationService
@@ -43,18 +49,22 @@ import {
 @NgModule({
   declarations: [
     AppComponent,
+    EmailComponent,
+    FormActionsComponent,
     LoginComponent,
     NavbarComponent,
     PasswordComponent,
-    RegisterComponent,
     RateTableComponent,
-    SidebarComponent
+    RegisterComponent,
+    SidebarComponent,
+    SubscriptionComponent
   ],
   imports: [
     HttpClientModule,
     ReactiveFormsModule,
 
     MatButtonModule,
+    MatButtonToggleModule,
     MatCardModule,
     MatFormFieldModule,
     MatIconModule,
@@ -76,7 +86,9 @@ import {
   ],
   providers: [
     RateService,
+    RequestService,
     SnackbarService,
+    SubscriptionService,
     ThemeService,
     UserService,
     ValidationService

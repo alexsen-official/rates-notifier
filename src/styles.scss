@@ -7,20 +7,6 @@ html {
 
 body {
   margin: 0;
-  font-family: Roboto, 'Helvetica Neue', sans-serif;
-}
-
-html, body {
-  height: 100%;
-}
-
-a {
-  font-weight: bold;
-}
-
-form {
-  display: flex;
-  flex-direction: column;
 }
 
 .button-group {
@@ -61,6 +47,22 @@ form {
   gap: 0.25rem;
 }
 
-.mat-card-footer {
-  margin-top: 1rem;
+.mat-form-field {
+  min-width: 100%;
+}
+
+.mat-card {
+  .mat-card-header {
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-start;
+
+    > .mat-card-header-text {
+      margin-left: 0;
+    }
+  }
+
+  .mat-card-footer {
+    margin-top: 1rem;
+  }
 }

@@ -1,6 +1,21 @@
 <mat-card>
-  <mat-card-title>Daily Treasury Par Yield Curve Rates</mat-card-title>
-  <mat-card-subtitle>Fetched from <a href="https://home.treasury.gov/" target="_blank">the official website</a> of the United States Government</mat-card-subtitle>
+  <mat-card-header>
+    <mat-card-title>Daily Treasury Par Yield Curve Rates</mat-card-title>
+
+    <mat-card-subtitle>
+      Fetched from
+      <a href="https://home.treasury.gov/" target="_blank">the official website</a>
+      of the United States Government
+    </mat-card-subtitle>
+
+    <div [matTooltip]="token ? '' : 'You must login to subscribe!'">
+      <a mat-flat-button color="primary"
+         routerLink="/subscribe" [disabled]="!token">
+        <mat-icon>add_alert</mat-icon>
+        Subscribe to updates
+      </a>
+    </div>
+  </mat-card-header>
 
   <div class="loading-shade" *ngIf="isLoading">
     <mat-spinner></mat-spinner>
