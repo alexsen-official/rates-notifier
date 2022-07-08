@@ -1,4 +1,5 @@
 module.exports = {
-    UserController: require('./user.controller'),
-    RateController: require('./rate.controller')
+    RateController: require('./rate.controller'),
+    SubscriptionController: require('./subscription.controller'),
+    UserController: require('./user.controller')
 };

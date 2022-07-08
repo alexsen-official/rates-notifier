@@ -1,9 +1,12 @@
-const { User } = require('../models');
+const { Subscription, User } = require('../models');
 
 class UserController {
     async get(req, res) {
         try {
-            const result = await User.findById(req.params.id);
+            const result = await User
+                .findById(req.params.id)
+                .populate(req.params?.populate);
+            
             res.json(result);
         }
         catch (err) {
@@ -47,8 +50,8 @@ class UserController {
                 res.status(401).json(new Error('Invalid password!'));
             }
         }
-        catch (error) {
-            res.status(500).json(error);
+        catch (err) {
+            res.status(500).json(err);
         }
     }
     
@@ -68,7 +71,14 @@ class UserController {
     
     async delete(req, res) {
         try {
-            const result = await User.deleteOne({ _id: req.params.id });
+            const result = await User.findById(req.params.id);
+    
+            await Subscription.deleteMany(
+                { _id: { $in: result.subscriptions } }
+            );
+            
+            await result.delete();
+            
             res.json(result);
         }
         catch (err) {

@@ -33,7 +33,11 @@ const UserSchema = new Schema({
         required: true,
         trim: true,
         select: false
-    }
+    },
+    subscriptions: [{
+        type: Schema.Types.ObjectId,
+        ref: 'Subscription'
+    }]
 });
 
 UserSchema.pre('save', async function(next) {

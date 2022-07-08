@@ -1,4 +1,5 @@
 module.exports = {
-    UserRouter: require('./user.router'),
-    RateRouter: require('./rate.router')
+    RateRouter: require('./rate.router'),
+    SubscriptionRouter: require('./subscription.router'),
+    UserRouter: require('./user.router')
 };
