@@ -2,8 +2,10 @@ require('dotenv').config();
 require('./mongoose');
 require('./notifier');
 
-const app = require('express')(),
-      
+const express = require('express'),
+      app = express(),
+    
+      path = require('path'),
       parser = require('body-parser'),
       routers = require('./routers'),
       
@@ -17,6 +19,11 @@ app.use(parser.urlencoded({ extended: true }));
 app.use('/rates', routers.RateRouter);
 app.use('/users', routers.UserRouter);
 app.use('/subscriptions', routers.SubscriptionRouter);
+
+app.use(express.static(path.resolve(__dirname, './dist/frontend')));
+app.get('/*', (req, res) =>
+    res.sendFile(path.join(__dirname))
+);
 
 app.listen(PORT, err => {
     if (err) throw err;
