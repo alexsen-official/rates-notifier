@@ -3,6 +3,11 @@ const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
 const SubscriptionSchema = new Schema({
+    userId: {
+        type: Schema.Types.ObjectId,
+        ref: 'User',
+        required: true
+    },
     fRate: {
         type: String,
         required: true
@@ -11,9 +16,8 @@ const SubscriptionSchema = new Schema({
         type: String,
         required: true
     },
-    userId: {
-        type: Schema.Types.ObjectId,
-        ref: 'User',
+    notifyAt: {
+        type: Date,
         required: true
     }
 });

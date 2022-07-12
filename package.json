@@ -15,6 +15,8 @@
     "dotenv": "^16.0.1",
     "express": "^4.18.1",
     "mongoose": "^6.3.8",
+    "node-schedule": "^2.1.0",
+    "nodemailer": "^6.7.7",
     "xml2json": "^0.12.0"
   },
   "devDependencies": {

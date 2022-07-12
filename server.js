@@ -1,11 +1,12 @@
 require('dotenv').config();
 require('./mongoose');
+require('./notifier');
 
 const app = require('express')(),
-    
+      
       parser = require('body-parser'),
       routers = require('./routers'),
-    
+      
       PORT = process.env.PORT || 3000;
 
 app.use(require('cors')());
