@@ -1,15 +1,18 @@
 <div class="container">
   <mat-card class="form-card">
-    <mat-card-title>Login</mat-card-title>
+    <mat-card-title>Register</mat-card-title>
 
     <mat-card-subtitle>
-      Don't have an account?
-      <a routerLink="/register">Register!</a>
+      Already have an account?
+      <a routerLink="/login">Login!</a>
     </mat-card-subtitle>
 
     <form [formGroup]="form" (ngSubmit)="onSubmit()">
-      <app-email [control]="email"></app-email>
-      <app-password [control]="password"></app-password>
+      <app-name-field [control]="name"></app-name-field>
+      <app-tel-field [control]="tel"></app-tel-field>
+      <app-email-field [control]="email"></app-email-field>
+      <app-password-field [control]="password"></app-password-field>
+
       <app-form-actions [form]="form"></app-form-actions>
     </form>
 

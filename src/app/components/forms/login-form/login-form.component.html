@@ -1,0 +1,21 @@
+<div class="container">
+  <mat-card class="form-card">
+    <mat-card-title>Login</mat-card-title>
+
+    <mat-card-subtitle>
+      Don't have an account?
+      <a routerLink="/register">Register!</a>
+    </mat-card-subtitle>
+
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+      <app-email-field [control]="email"></app-email-field>
+      <app-password-field [control]="password"></app-password-field>
+
+      <app-form-actions [form]="form"></app-form-actions>
+    </form>
+
+    <mat-card-footer *ngIf="form.disabled">
+      <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+    </mat-card-footer>
+  </mat-card>
+</div>

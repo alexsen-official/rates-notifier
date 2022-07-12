@@ -31,7 +31,7 @@ export class RateTableComponent implements AfterViewInit {
       }),
       map(rates => {
         this.isLoading = false;
-        this.cols = Object.keys(rates[0]).slice(1, -1);
+        this.cols = Object.keys(rates[0]);
 
         return rates;
       }))

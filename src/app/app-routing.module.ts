@@ -2,17 +2,17 @@ import { NgModule }             from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import {
-  LoginComponent,
-  RegisterComponent,
+  LoginFormComponent,
+  RegisterFormComponent,
   RateTableComponent,
-  SubscriptionComponent
+  SubscriptionFormComponent
 } from './components';
 
 const routes: Routes = [
-  { path: '',          component: RateTableComponent    },
-  { path: 'login',     component: LoginComponent        },
-  { path: 'register',  component: RegisterComponent     },
-  { path: 'subscribe', component: SubscriptionComponent },
+  { path: '',          component: RateTableComponent        },
+  { path: 'login',     component: LoginFormComponent        },
+  { path: 'register',  component: RegisterFormComponent     },
+  { path: 'subscribe', component: SubscriptionFormComponent },
 
   { path: '**', redirectTo: '' }
 ];

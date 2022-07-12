@@ -1,13 +1,13 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormControl, Validators }  from '@angular/forms';
-import { ValidationService }        from '../../services';
+import { ValidationService }        from '../../../services';
 
 @Component({
-  selector: 'app-email[control]',
-  templateUrl: './email.component.html',
-  styleUrls: ['./email.component.scss']
+  selector: 'app-email-field[control]',
+  templateUrl: './email-field.component.html',
+  styleUrls: ['./email-field.component.scss']
 })
-export class EmailComponent implements OnInit {
+export class EmailFieldComponent implements OnInit {
   @Input() control!: FormControl;
 
   constructor(private readonly _validation: ValidationService) { }

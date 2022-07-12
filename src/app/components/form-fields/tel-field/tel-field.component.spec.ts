@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { SubscriptionComponent }     from './subscription.component';
+import { TelFieldComponent }         from './tel-field.component';
 
-describe('SubscriptionComponent', () => {
-  let component: SubscriptionComponent;
-  let fixture  : ComponentFixture<SubscriptionComponent>;
+describe('TelFieldComponent', () => {
+  let component: TelFieldComponent;
+  let fixture  : ComponentFixture<TelFieldComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [SubscriptionComponent]
+      declarations: [TelFieldComponent]
     }).compileComponents();
   });
 
   beforeEach(() => {
-    fixture   = TestBed.createComponent(SubscriptionComponent);
+    fixture   = TestBed.createComponent(TelFieldComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

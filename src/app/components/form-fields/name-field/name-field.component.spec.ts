@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { EmailComponent }            from './email.component';
+import { NameFieldComponent }        from './name-field.component';
 
-describe('EmailComponent', () => {
-  let component: EmailComponent;
-  let fixture  : ComponentFixture<EmailComponent>;
+describe('NameFieldComponent', () => {
+  let component: NameFieldComponent;
+  let fixture  : ComponentFixture<NameFieldComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [EmailComponent]
+      declarations: [NameFieldComponent]
     }).compileComponents();
   });
 
   beforeEach(() => {
-    fixture   = TestBed.createComponent(EmailComponent);
+    fixture   = TestBed.createComponent(NameFieldComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

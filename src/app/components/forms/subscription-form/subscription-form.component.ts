@@ -1,24 +1,40 @@
 import { Component, OnInit }                    from '@angular/core';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { Router }                               from '@angular/router';
-import { ISubscription }                        from '../../interfaces';
+import { ISubscription }                        from '../../../interfaces';
 
 import {
   RateService,
   SnackbarService,
   SubscriptionService,
   UserService
-} from '../../services';
+} from '../../../services';
+
+import { numericOnlyValidator } from '../../../validators';
 
 @Component({
-  selector: 'app-subscription',
-  templateUrl: './subscription.component.html',
-  styleUrls: ['./subscription.component.scss']
+  selector: 'app-subscription-form',
+  templateUrl: './subscription-form.component.html',
+  styleUrls: ['./subscription-form.component.scss']
 })
-export class SubscriptionComponent implements OnInit {
+export class SubscriptionFormComponent implements OnInit {
   readonly form = this._builder.group({
     fRate: [null, [Validators.required]],
-    sRate: [null, [Validators.required]]
+    sRate: [null, [Validators.required]],
+
+    hours: [10, [
+      Validators.min(0),
+      Validators.max(23),
+      numericOnlyValidator(),
+      Validators.required
+    ]],
+
+    minutes: [0, [
+      Validators.min(0),
+      Validators.max(59),
+      numericOnlyValidator(),
+      Validators.required
+    ]]
   });
 
   cols: string[] = [];
@@ -30,8 +46,10 @@ export class SubscriptionComponent implements OnInit {
               private readonly _subscription: SubscriptionService,
               private readonly _snackbar    : SnackbarService) { }
 
-  get fRate() { return this.form.get('fRate') as FormControl; }
-  get sRate() { return this.form.get('sRate') as FormControl; }
+  get fRate()   { return this.form.get('fRate')   as FormControl; }
+  get sRate()   { return this.form.get('sRate')   as FormControl; }
+  get hours()   { return this.form.get('hours')   as FormControl; }
+  get minutes() { return this.form.get('minutes') as FormControl; }
 
   get token() { return this._user.token; }
 
@@ -44,7 +62,7 @@ export class SubscriptionComponent implements OnInit {
           .subscribe({
             next: val => {
               this.form.enable();
-              this.cols = Object.keys(val[0]).slice(2, -1);
+              this.cols = Object.keys(val[0]).slice(1);
             },
             error: err => console.error(err)
           });
@@ -62,13 +80,17 @@ export class SubscriptionComponent implements OnInit {
 
   onSubmit() {
     if (this.form.valid) {
+      const notifyAt = new Date();
+            notifyAt.setHours(this.hours.value, this.minutes.value);
+
       this.form.disable();
 
       this._subscription
           .create({
-            fRate: this.cols[this.fRate.value],
-            sRate: this.cols[this.sRate.value],
-            userId: this.token._id
+            userId: this.token._id,
+            fRate : this.cols[this.fRate.value],
+            sRate : this.cols[this.sRate.value],
+            notifyAt
           } as ISubscription)
           .subscribe({
             next: () => {

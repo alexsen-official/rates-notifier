@@ -1,31 +1,17 @@
-import { Component, OnInit }                               from '@angular/core';
-import { FormBuilder, FormControl, Validators }            from '@angular/forms';
-import { Router }                                          from '@angular/router';
-import { SnackbarService, UserService, ValidationService } from '../../services';
-import { lettersOnlyValidator, numericOnlyValidator }      from '../../validators';
+import { Component, OnInit }            from '@angular/core';
+import { FormBuilder, FormControl }     from '@angular/forms';
+import { Router }                       from '@angular/router';
+import { SnackbarService, UserService } from '../../../services';
 
 @Component({
-  selector: 'app-register',
-  templateUrl: './register.component.html',
-  styleUrls: ['./register.component.scss']
+  selector: 'app-register-form',
+  templateUrl: './register-form.component.html',
+  styleUrls: ['./register-form.component.scss']
 })
-export class RegisterComponent implements OnInit {
-  readonly maxNameLength = 128;
-
+export class RegisterFormComponent implements OnInit {
   readonly form = this._builder.group({
-    name: [null, [
-      Validators.required,
-      Validators.minLength(5),
-      Validators.maxLength(this.maxNameLength),
-      lettersOnlyValidator()
-    ]],
-
-    tel: [null, [
-      Validators.minLength(7),
-      Validators.maxLength(15),
-      numericOnlyValidator()
-    ]],
-
+    name    : [null, []],
+    tel     : [null, []],
     email   : [null, []],
     password: [null, []]
   });
@@ -33,8 +19,7 @@ export class RegisterComponent implements OnInit {
   constructor(private readonly _builder   : FormBuilder,
               private readonly _router    : Router,
               private readonly _snackbar  : SnackbarService,
-              private readonly _user      : UserService,
-              private readonly _validation: ValidationService) { }
+              private readonly _user      : UserService) { }
 
   get name()     { return this.form.get('name')     as FormControl; }
   get tel()      { return this.form.get('tel')      as FormControl; }
@@ -68,7 +53,4 @@ export class RegisterComponent implements OnInit {
           });
     }
   }
-
-  getError = (control: FormControl, label: string) =>
-    this._validation.getError(control, label);
 }

@@ -1,14 +1,14 @@
 import { Component, OnInit }            from '@angular/core';
 import { FormBuilder, FormControl }     from '@angular/forms';
 import { Router }                       from '@angular/router';
-import { SnackbarService, UserService } from '../../services';
+import { SnackbarService, UserService } from '../../../services';
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  selector: 'app-login-form',
+  templateUrl: './login-form.component.html',
+  styleUrls: ['./login-form.component.scss']
 })
-export class LoginComponent implements OnInit {
+export class LoginFormComponent implements OnInit {
   readonly form = this._builder.group({
     email   : [null, []],
     password: [null, []]

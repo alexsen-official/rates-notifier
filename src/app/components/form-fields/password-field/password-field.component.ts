@@ -1,19 +1,19 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormControl, Validators }  from '@angular/forms';
-import { ValidationService }        from '../../services';
+import { ValidationService }        from '../../../services';
 
 import {
   hasLowercaseValidator,
   hasNumericValidator,
   hasUppercaseValidator
-} from '../../validators';
+} from '../../../validators';
 
 @Component({
-  selector: 'app-password[control]',
-  templateUrl: './password.component.html',
-  styleUrls: ['./password.component.scss']
+  selector: 'app-password-field[control]',
+  templateUrl: './password-field.component.html',
+  styleUrls: ['./password-field.component.scss']
 })
-export class PasswordComponent implements OnInit {
+export class PasswordFieldComponent implements OnInit {
   @Input() control!: FormControl;
 
   isHidden = true;

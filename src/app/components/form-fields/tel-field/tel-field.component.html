@@ -1,0 +1,7 @@
+<mat-form-field appearance="outline">
+  <mat-label>Phone</mat-label>
+  <input matInput type="tel" [formControl]="control"/>
+
+  <mat-icon matPrefix>phone</mat-icon>
+  <mat-error>{{ getError() }}</mat-error>
+</mat-form-field>

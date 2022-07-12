@@ -1,6 +1,7 @@
 export interface ISubscription {
-  _id   : string,
-  fRate : string,
-  sRate : string,
-  userId: string
+  _id     : string,
+  userId  : string,
+  fRate   : string,
+  sRate   : string,
+  notifyAt: Date
 }

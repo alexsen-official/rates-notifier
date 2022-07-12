@@ -1,6 +1,6 @@
-import { HttpClientModule }    from '@angular/common/http';
-import { NgModule }            from '@angular/core';
-import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule }         from '@angular/common/http';
+import { NgModule }                 from '@angular/core';
+import { ReactiveFormsModule }      from '@angular/forms';
 
 import { MatButtonModule }          from '@angular/material/button';
 import { MatButtonToggleModule }    from '@angular/material/button-toggle';
@@ -12,28 +12,34 @@ import { MatMenuModule }            from '@angular/material/menu';
 import { MatPaginatorModule }       from '@angular/material/paginator';
 import { MatProgressBarModule }     from '@angular/material/progress-bar';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatSelectModule }          from '@angular/material/select';
 import { MatSidenavModule }         from '@angular/material/sidenav';
 import { MatSnackBarModule }        from '@angular/material/snack-bar';
 import { MatTableModule }           from '@angular/material/table';
 import { MatToolbarModule }         from '@angular/material/toolbar';
 import { MatTooltipModule }         from '@angular/material/tooltip';
 
-import { BrowserModule }           from '@angular/platform-browser';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { BrowserModule }            from '@angular/platform-browser';
+import { BrowserAnimationsModule }  from '@angular/platform-browser/animations';
 
-import { AppRoutingModule } from './app-routing.module';
+import { AppRoutingModule }         from './app-routing.module';
 
 import {
   AppComponent,
-  EmailComponent,
   FormActionsComponent,
-  LoginComponent,
+
+  EmailFieldComponent,
+  NameFieldComponent,
+  PasswordFieldComponent,
+  TelFieldComponent,
+
+  LoginFormComponent,
+  RegisterFormComponent,
+  SubscriptionFormComponent,
+
   NavbarComponent,
-  PasswordComponent,
   RateTableComponent,
-  RegisterComponent,
-  SidebarComponent,
-  SubscriptionComponent
+  SidebarComponent
 } from './components';
 
 import {
@@ -49,15 +55,20 @@ import {
 @NgModule({
   declarations: [
     AppComponent,
-    EmailComponent,
     FormActionsComponent,
-    LoginComponent,
+
+    EmailFieldComponent,
+    NameFieldComponent,
+    PasswordFieldComponent,
+    TelFieldComponent,
+
+    LoginFormComponent,
+    RegisterFormComponent,
+    SubscriptionFormComponent,
+
     NavbarComponent,
-    PasswordComponent,
     RateTableComponent,
-    RegisterComponent,
-    SidebarComponent,
-    SubscriptionComponent
+    SidebarComponent
   ],
   imports: [
     HttpClientModule,
@@ -73,6 +84,7 @@ import {
     MatPaginatorModule,
     MatProgressBarModule,
     MatProgressSpinnerModule,
+    MatSelectModule,
     MatSidenavModule,
     MatSnackBarModule,
     MatTableModule,
