@@ -1,4 +1,6 @@
 export { AppComponent }              from '../app.component';
+
+export { DashboardComponent }        from './dashboard/dashboard.component';
 export { FormActionsComponent }      from './form-actions/form-actions.component';
 
 export { EmailFieldComponent }       from './form-fields/email-field/email-field.component';

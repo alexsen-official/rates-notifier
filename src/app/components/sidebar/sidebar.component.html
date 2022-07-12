@@ -1,5 +1,11 @@
 <aside>
   <ng-container *ngIf="token; else unauthorized">
+    <a mat-button routerLink="/dashboard"
+       routerLinkActive="mat-flat-button">
+      <mat-icon>dashboard</mat-icon>
+      Dashboard
+    </a>
+
     <button mat-button (click)="logoutUser()">
       <mat-icon>meeting_room</mat-icon>
       Logout

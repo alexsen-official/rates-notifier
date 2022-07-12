@@ -1,0 +1,40 @@
+<div class="container">
+  <div class="container-element space-between">
+    <h1>Dashboard</h1>
+
+    <a mat-flat-button color="primary"
+       routerLink="/subscribe" [disabled]="!token">
+      <mat-icon>add_alert</mat-icon>
+      Add
+    </a>
+  </div>
+
+  <mat-spinner *ngIf="isLoading; else loaded"></mat-spinner>
+
+  <ng-template #loaded>
+    <ng-container *ngIf="subs.length > 0; else noSubs">
+      <ng-container *ngFor="let sub of subs">
+        <mat-card class="container-element space-between">
+          <mat-card-header>
+            <mat-card-title>{{ sub.fRate }} > {{ sub.sRate }}</mat-card-title>
+            <mat-card-subtitle>at {{ sub.notifyAt | date:'shortTime' }}</mat-card-subtitle>
+          </mat-card-header>
+
+          <button mat-flat-button color="warn" (click)="unsubscribe(sub._id)">
+            <mat-icon>notifications_off</mat-icon>
+            Delete
+          </button>
+        </mat-card>
+      </ng-container>
+    </ng-container>
+
+    <ng-template #noSubs>
+      <mat-card-subtitle>
+        You have no subscriptions!
+      </mat-card-subtitle>
+    </ng-template>
+  </ng-template>
+</div>
+
+
+

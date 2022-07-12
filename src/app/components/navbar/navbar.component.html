@@ -21,6 +21,11 @@
           </button>
 
           <mat-menu #menu="matMenu">
+            <a mat-menu-item routerLink="/dashboard">
+              <mat-icon>dashboard</mat-icon>
+              Dashboard
+            </a>
+
             <button mat-menu-item (click)="logoutUser()">
               <mat-icon>meeting_room</mat-icon>
               Logout

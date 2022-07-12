@@ -6,5 +6,5 @@ export interface IUser {
   tel?         : string,
   email        : string,
   password     : string,
-  subscriptions: ISubscription[] | string[]
+  subscriptions: ISubscription[]
 }

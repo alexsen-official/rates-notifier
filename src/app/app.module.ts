@@ -26,6 +26,8 @@ import { AppRoutingModule }         from './app-routing.module';
 
 import {
   AppComponent,
+
+  DashboardComponent,
   FormActionsComponent,
 
   EmailFieldComponent,
@@ -55,6 +57,8 @@ import {
 @NgModule({
   declarations: [
     AppComponent,
+
+    DashboardComponent,
     FormActionsComponent,
 
     EmailFieldComponent,
@@ -68,7 +72,8 @@ import {
 
     NavbarComponent,
     RateTableComponent,
-    SidebarComponent
+    SidebarComponent,
+    DashboardComponent
   ],
   imports: [
     HttpClientModule,

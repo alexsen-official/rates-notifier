@@ -15,8 +15,9 @@ body {
   align-items: center;
   justify-content: center;
 
-  .form-card {
+  .container-element {
     width: 100%;
+    margin-bottom: 1rem;
     box-sizing: border-box;
 
     @include xs {
@@ -33,6 +34,12 @@ body {
       width: 25%;
     }
   }
+}
+
+.space-between {
+  display: flex !important;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .mat-button-wrapper {

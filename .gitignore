@@ -1,5 +1,5 @@
 # Compiled output
-/dist
+/backend/dist
 /tmp
 /out-tsc
 /bazel-out

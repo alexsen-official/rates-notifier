@@ -27,7 +27,7 @@ export class ThemeService {
   get currentTheme()  { return this._currentTheme;  }
   get oppositeTheme() { return this._oppositeTheme; }
 
-  get prefersDark()   { return window.matchMedia('prefers-color-scheme: dark').matches; }
+  get prefersDark()   { return window.matchMedia('(prefers-color-scheme: dark)').matches; }
 
   set currentTheme(theme: Theme) {
     this._oppositeTheme = this._currentTheme;
