@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiUrl: '' // TODO: Fill in the production API URL
+  apiUrl: 'https://rates-notifier-356116.ue.r.appspot.com'
 };
