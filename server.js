@@ -1,6 +1,5 @@
 require('dotenv').config();
 require('./mongoose');
-require('./notifier');
 
 const express = require('express'),
       app = express(),
@@ -16,6 +15,7 @@ app.use(require('cors')());
 app.use(parser.json());
 app.use(parser.urlencoded({ extended: true }));
 
+app.use('/email', routers.EmailRouter);
 app.use('/rates', routers.RateRouter);
 app.use('/users', routers.UserRouter);
 app.use('/subscriptions', routers.SubscriptionRouter);

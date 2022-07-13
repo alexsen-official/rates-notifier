@@ -1,7 +1,7 @@
 const { Subscription, User } = require('../models');
 
 class UserController {
-    async get(req, res) {
+    get = async (req, res) =>  {
         try {
             const result = await User
                 .findById(req.params.id)
@@ -10,31 +10,31 @@ class UserController {
             res.json(result);
         }
         catch (err) {
-            res.status(500).json(err);
+            res.status(500).json(err.message);
         }
     }
     
-    async getAll(req, res) {
+    getAll = async (req, res) =>  {
         try {
             const result = await User.find();
             res.json(result);
         }
         catch (err) {
-            res.status(500).json(err);
+            res.status(500).json(err.message);
         }
     }
     
-    async create(req, res) {
+    create = async (req, res) =>  {
         try {
             const result = await User.create(req.body);
             res.json(result);
         }
         catch (err) {
-            res.status(500).json(err);
+            res.status(500).json(err.message);
         }
     }
     
-    async login(req, res) {
+    login = async (req, res) =>  {
         try {
             const result = await User
                 .findOne({ email: req.body.email })
@@ -51,11 +51,11 @@ class UserController {
             }
         }
         catch (err) {
-            res.status(500).json(err);
+            res.status(500).json(err.message);
         }
     }
     
-    async update(req, res) {
+    update = async (req, res) =>  {
         try {
             const result = await User.updateOne(
                 { _id: req.params.id },
@@ -65,11 +65,11 @@ class UserController {
             res.json(result);
         }
         catch (err) {
-            res.status(500).json(err);
+            res.status(500).json(err.message);
         }
     }
     
-    async delete(req, res) {
+    delete = async (req, res) =>  {
         try {
             const result = await User.findById(req.params.id);
     
@@ -82,7 +82,7 @@ class UserController {
             res.json(result);
         }
         catch (err) {
-            res.status(500).json(err);
+            res.status(500).json(err.message);
         }
     }
 }

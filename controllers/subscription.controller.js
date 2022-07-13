@@ -1,27 +1,27 @@
 const { Subscription, User } = require('../models');
 
 class SubscriptionController {
-    async get(req, res) {
+    get = async (req, res) =>  {
         try {
             const result = await Subscription.findById(req.params.id);
             res.json(result);
         }
         catch (err) {
-            res.status(500).json(err);
+            res.status(500).json(err.message);
         }
     }
     
-    async getAll(req, res) {
+    getAll = async (req, res) =>  {
         try {
             const result = await Subscription.find();
             res.json(result);
         }
         catch (err) {
-            res.status(500).json(err);
+            res.status(500).json(err.message);
         }
     }
     
-    async create(req, res) {
+    create = async (req, res) =>  {
         try {
             const result = await Subscription.create(req.body);
     
@@ -33,11 +33,11 @@ class SubscriptionController {
             res.json(result);
         }
         catch (err) {
-            res.status(500).json(err);
+            res.status(500).json(err.message);
         }
     }
     
-    async update(req, res) {
+    update = async (req, res) =>  {
         try {
             const result = await Subscription.updateOne(
                 { _id: req.params.id },
@@ -47,11 +47,11 @@ class SubscriptionController {
             res.json(result);
         }
         catch (err) {
-            res.status(500).json(err);
+            res.status(500).json(err.message);
         }
     }
     
-    async delete(req, res) {
+    delete = async (req, res) =>  {
         try {
             const result = await Subscription.findById(req.params.id);
     
@@ -65,7 +65,7 @@ class SubscriptionController {
             res.json(result);
         }
         catch (err) {
-            res.status(500).json(err);
+            res.status(500).json(err.message);
         }
     }
 }
