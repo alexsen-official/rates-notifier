@@ -15,8 +15,8 @@ class Scheduler {
                     headers: { 'Content-Type': 'application/json' },
                     body: Buffer.from(JSON.stringify({ schedule, ...options }), 'utf-8')
                 },
-                schedule: `${ schedule.getMinutes() } ${ schedule.getHours() } ${ schedule.getDate() } ${ schedule.getMonth() + 1 } *`,
-                timeZone: 'America/Los_Angeles'
+                schedule: `${ schedule.getUTCMinutes() } ${ schedule.getUTCHours() } ${ schedule.getUTCDate() } ${ schedule.getUTCMonth() + 1 } *`,
+                timeZone: 'Etc/UTC'
             }
         };
         
