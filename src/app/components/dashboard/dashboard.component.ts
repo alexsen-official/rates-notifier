@@ -47,8 +47,8 @@ export class DashboardComponent implements OnInit {
     this._subscription
         .delete(id)
         .subscribe({
-          next: val => {
-            this.subs.filter(i => i !== val);
+          next: () => {
+            this.subs = this.subs.filter(i => i._id !== id);
             this.isLoading = false;
             this._snackbar.open('You have successfully unsubscribed!');
           },
