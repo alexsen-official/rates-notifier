@@ -1,26 +1,35 @@
-import { Component, EventEmitter, Input, Output }     from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+
 import { SnackbarService, ThemeService, UserService } from '../../services';
 
 @Component({
   selector: 'app-navbar[title]',
   templateUrl: './navbar.component.html',
-  styleUrls: ['./navbar.component.scss']
+  styleUrls: ['./navbar.component.scss'],
 })
 export class NavbarComponent {
-  @Input () title!: string;
+  @Input() title!: string;
   @Output() drawerToggle = new EventEmitter();
 
-  constructor(private readonly _snackbar: SnackbarService,
-              private readonly _theme   : ThemeService,
-              private readonly _user    : UserService) { }
+  constructor(
+    private readonly _snackbarService: SnackbarService,
+    private readonly _themeService: ThemeService,
+    private readonly _userService: UserService
+  ) {}
 
-  get oppositeTheme() { return this._theme.oppositeTheme; }
-  get token()         { return this._user.token;          }
+  get oppositeTheme() {
+    return this._themeService.oppositeTheme;
+  }
+  get token() {
+    return this._userService.token;
+  }
 
-  reverseTheme = () => this._theme.reverseTheme();
+  reverseTheme() {
+    this._themeService.reverseTheme();
+  }
 
   logoutUser() {
-    this._user.logout();
-    this._snackbar.open('You have successfully logged out!');
+    this._userService.logout();
+    this._snackbarService.open('You have successfully logged out!');
   }
 }

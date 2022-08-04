@@ -10,8 +10,11 @@
           <mat-label>HH</mat-label>
 
           <mat-select [formControl]="hours">
-            <mat-option *ngFor="let _ of [].constructor(24); index as hour" [value]="hour">
-              {{ ('0' + hour).slice(-2) }}
+            <mat-option
+              *ngFor="let _ of [].constructor(24); index as hour"
+              [value]="hour"
+            >
+              {{ ("0" + hour).slice(-2) }}
             </mat-option>
           </mat-select>
         </mat-form-field>
@@ -22,14 +25,19 @@
           <mat-label>MM</mat-label>
 
           <mat-select [formControl]="minutes">
-            <mat-option *ngFor="let _ of [].constructor(60); index as minute" [value]="minute">
-              {{ ('0' + minute).slice(-2) }}
+            <mat-option
+              *ngFor="let _ of [].constructor(60); index as minute"
+              [value]="minute"
+            >
+              {{ ("0" + minute).slice(-2) }}
             </mat-option>
           </mat-select>
         </mat-form-field>
       </div>
 
-      <label>when the rate of: <b>{{ cols[fRate.value] }}</b></label>
+      <label
+        >when the rate of: <b>{{ cols[fRate.value] }}</b></label
+      >
 
       <mat-button-toggle-group name="fRate" [formControl]="fRate">
         <mat-button-toggle *ngFor="let col of cols; let i = index" [value]="i">
@@ -37,11 +45,17 @@
         </mat-button-toggle>
       </mat-button-toggle-group>
 
-      <label>is higher than the rate of: <b>{{ cols[sRate.value] }}</b></label>
+      <label
+        >is higher than the rate of: <b>{{ cols[sRate.value] }}</b></label
+      >
 
       <mat-button-toggle-group name="sRate" [formControl]="sRate">
-        <mat-button-toggle #sRateToggle *ngFor="let col of cols; let i = index" [value]="i"
-                           [disabled]="fRate.value >= sRateToggle.value">
+        <mat-button-toggle
+          #sRateToggle
+          *ngFor="let col of cols; let i = index"
+          [value]="i"
+          [disabled]="fRate.value >= sRateToggle.value"
+        >
           {{ col }}
         </mat-button-toggle>
       </mat-button-toggle-group>

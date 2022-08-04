@@ -1,13 +1,15 @@
 <mat-toolbar color="primary">
   <mat-toolbar-row>
-    <button mat-icon-button class="xs-none"
-            (click)="drawerToggle.emit()">
+    <button mat-icon-button class="xs-none" (click)="drawerToggle.emit()">
       <mat-icon>menu</mat-icon>
     </button>
 
-    <a mat-button routerLink="/"
-       routerLinkActive="mat-flat-button"
-       [routerLinkActiveOptions]="{ exact: true }">
+    <a
+      mat-button
+      routerLink="/"
+      routerLinkActive="mat-flat-button"
+      [routerLinkActiveOptions]="{ exact: true }"
+    >
       <mat-icon>notifications_active</mat-icon>
       {{ title }}
     </a>
@@ -34,25 +36,29 @@
         </ng-container>
 
         <ng-template #unauthorized>
-          <a mat-button routerLink="/login"
-             routerLinkActive="mat-flat-button">
+          <a mat-button routerLink="/login" routerLinkActive="mat-flat-button">
             <mat-icon>exit_to_app</mat-icon>
             Login
           </a>
 
-          <a mat-button routerLink="/register"
-             routerLinkActive="mat-flat-button">
+          <a
+            mat-button
+            routerLink="/register"
+            routerLinkActive="mat-flat-button"
+          >
             <mat-icon>person_add</mat-icon>
             Register
           </a>
         </ng-template>
       </nav>
 
-      <button mat-icon-button
-              matTooltip="Use {{ oppositeTheme }} theme"
-              (click)="reverseTheme()">
+      <button
+        mat-icon-button
+        matTooltip="Use {{ oppositeTheme }} theme"
+        (click)="reverseTheme()"
+      >
         <mat-icon>
-          {{ oppositeTheme === 'light' ? 'wb_sunny' : 'brightness_2' }}
+          {{ oppositeTheme === "light" ? "wb_sunny" : "brightness_2" }}
         </mat-icon>
       </button>
     </div>

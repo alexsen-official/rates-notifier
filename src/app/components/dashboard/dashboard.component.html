@@ -2,8 +2,12 @@
   <div class="container-element space-between">
     <h1>Dashboard</h1>
 
-    <a mat-flat-button color="primary"
-       routerLink="/subscribe" [disabled]="!token">
+    <a
+      mat-flat-button
+      color="primary"
+      routerLink="/subscribe"
+      [disabled]="!token"
+    >
       <mat-icon>add_alert</mat-icon>
       Add
     </a>
@@ -17,7 +21,9 @@
         <mat-card class="container-element space-between">
           <mat-card-header>
             <mat-card-title>{{ sub.fRate }} > {{ sub.sRate }}</mat-card-title>
-            <mat-card-subtitle>at {{ sub.notifyAt | date:'shortTime' }}</mat-card-subtitle>
+            <mat-card-subtitle
+              >at {{ sub.notifyAt | date: "shortTime" }}</mat-card-subtitle
+            >
           </mat-card-header>
 
           <button mat-flat-button color="warn" (click)="unsubscribe(sub._id)">
@@ -29,12 +35,7 @@
     </ng-container>
 
     <ng-template #noSubs>
-      <mat-card-subtitle>
-        You have no subscriptions!
-      </mat-card-subtitle>
+      <mat-card-subtitle> You have no subscriptions! </mat-card-subtitle>
     </ng-template>
   </ng-template>
 </div>
-
-
-

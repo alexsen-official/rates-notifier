@@ -4,9 +4,7 @@
   </mat-drawer>
 
   <mat-drawer-content>
-    <app-navbar [title]="title"
-                (drawerToggle)="drawer.toggle()">
-    </app-navbar>
+    <app-navbar [title]="title" (drawerToggle)="drawer.toggle()"> </app-navbar>
 
     <main class="{{ currentTheme }} mat-app-background">
       <router-outlet></router-outlet>

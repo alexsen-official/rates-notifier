@@ -1,49 +1,41 @@
-import { HttpClientModule }         from '@angular/common/http';
-import { NgModule }                 from '@angular/core';
-import { ReactiveFormsModule }      from '@angular/forms';
-
-import { MatButtonModule }          from '@angular/material/button';
-import { MatButtonToggleModule }    from '@angular/material/button-toggle';
-import { MatCardModule }            from '@angular/material/card';
-import { MatFormFieldModule }       from '@angular/material/form-field';
-import { MatIconModule }            from '@angular/material/icon';
-import { MatInputModule }           from '@angular/material/input';
-import { MatMenuModule }            from '@angular/material/menu';
-import { MatPaginatorModule }       from '@angular/material/paginator';
-import { MatProgressBarModule }     from '@angular/material/progress-bar';
+import { HttpClientModule } from '@angular/common/http';
+import { NgModule } from '@angular/core';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MatButtonModule } from '@angular/material/button';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
+import { MatCardModule } from '@angular/material/card';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { MatSelectModule }          from '@angular/material/select';
-import { MatSidenavModule }         from '@angular/material/sidenav';
-import { MatSnackBarModule }        from '@angular/material/snack-bar';
-import { MatTableModule }           from '@angular/material/table';
-import { MatToolbarModule }         from '@angular/material/toolbar';
-import { MatTooltipModule }         from '@angular/material/tooltip';
+import { MatSelectModule } from '@angular/material/select';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatTableModule } from '@angular/material/table';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { BrowserModule }            from '@angular/platform-browser';
-import { BrowserAnimationsModule }  from '@angular/platform-browser/animations';
-
-import { AppRoutingModule }         from './app-routing.module';
-
+import { AppRoutingModule } from './app-routing.module';
 import {
   AppComponent,
-
   DashboardComponent,
-  FormActionsComponent,
-
   EmailFieldComponent,
-  NameFieldComponent,
-  PasswordFieldComponent,
-  TelFieldComponent,
-
+  FormActionsComponent,
   LoginFormComponent,
-  RegisterFormComponent,
-  SubscriptionFormComponent,
-
+  NameFieldComponent,
   NavbarComponent,
+  PasswordFieldComponent,
   RateTableComponent,
-  SidebarComponent
+  RegisterFormComponent,
+  SidebarComponent,
+  SubscriptionFormComponent,
+  TelFieldComponent,
 } from './components';
-
 import {
   RateService,
   RequestService,
@@ -51,7 +43,7 @@ import {
   SubscriptionService,
   ThemeService,
   UserService,
-  ValidationService
+  ValidationService,
 } from './services';
 
 @NgModule({
@@ -73,7 +65,7 @@ import {
     NavbarComponent,
     RateTableComponent,
     SidebarComponent,
-    DashboardComponent
+    DashboardComponent,
   ],
   imports: [
     HttpClientModule,
@@ -99,7 +91,7 @@ import {
     BrowserModule,
     BrowserAnimationsModule,
 
-    AppRoutingModule
+    AppRoutingModule,
   ],
   providers: [
     RateService,
@@ -108,8 +100,8 @@ import {
     SubscriptionService,
     ThemeService,
     UserService,
-    ValidationService
+    ValidationService,
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

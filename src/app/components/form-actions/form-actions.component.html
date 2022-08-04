@@ -1,14 +1,17 @@
 <div class="button-group">
   <div [matTooltip]="form.invalid ? 'Fill in all required fields!' : ''">
-    <button mat-flat-button color="primary" type="submit"
-            [disabled]="form.invalid || form.disabled">
+    <button
+      mat-flat-button
+      color="primary"
+      type="submit"
+      [disabled]="form.invalid || form.disabled"
+    >
       <mat-icon inline>check</mat-icon>
       Submit
     </button>
   </div>
 
-  <button mat-flat-button color="warn" type="reset"
-          [disabled]="form.disabled">
+  <button mat-flat-button color="warn" type="reset" [disabled]="form.disabled">
     <mat-icon inline>close</mat-icon>
     Reset
   </button>

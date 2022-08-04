@@ -1,33 +1,40 @@
 import { OverlayContainer } from '@angular/cdk/overlay';
-import { Injectable }       from '@angular/core';
+import { Injectable } from '@angular/core';
 
 enum Theme {
   light = 'light',
-  dark = 'dark'
+  dark = 'dark',
 }
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ThemeService {
-  private _currentTheme  = Theme.light;
+  private _currentTheme = Theme.light;
   private _oppositeTheme = Theme.dark;
 
   constructor(private readonly _overlay: OverlayContainer) {
     const savedTheme = localStorage.getItem('theme');
 
-    if (savedTheme)
+    if (savedTheme) {
       this.currentTheme = savedTheme as Theme;
-    else if (this.prefersDark)
+    } else if (this.prefersDark) {
       this.currentTheme = Theme.dark;
+    }
 
     this.matchOverlays();
   }
 
-  get currentTheme()  { return this._currentTheme;  }
-  get oppositeTheme() { return this._oppositeTheme; }
+  get currentTheme() {
+    return this._currentTheme;
+  }
+  get oppositeTheme() {
+    return this._oppositeTheme;
+  }
 
-  get prefersDark()   { return window.matchMedia('(prefers-color-scheme: dark)').matches; }
+  get prefersDark() {
+    return window.matchMedia('(prefers-color-scheme: dark)').matches;
+  }
 
   set currentTheme(theme: Theme) {
     this._oppositeTheme = this._currentTheme;
@@ -36,7 +43,9 @@ export class ThemeService {
     localStorage.setItem('theme', theme);
   }
 
-  reverseTheme() { this.currentTheme = this.oppositeTheme; }
+  reverseTheme() {
+    this.currentTheme = this.oppositeTheme;
+  }
 
   matchOverlays() {
     const container = this._overlay.getContainerElement();

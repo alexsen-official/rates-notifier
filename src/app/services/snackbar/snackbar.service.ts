@@ -1,8 +1,8 @@
-import { Injectable }                     from '@angular/core';
+import { Injectable } from '@angular/core';
 import { MatSnackBar, MatSnackBarConfig } from '@angular/material/snack-bar';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class SnackbarService {
   readonly config = new MatSnackBarConfig();
@@ -11,7 +11,7 @@ export class SnackbarService {
     this.config = {
       duration: 5000,
       horizontalPosition: 'end',
-      verticalPosition: 'bottom'
+      verticalPosition: 'bottom',
     };
   }
 

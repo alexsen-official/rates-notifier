@@ -1,52 +1,66 @@
-import { Component, OnInit }            from '@angular/core';
-import { FormBuilder, FormControl }     from '@angular/forms';
-import { Router }                       from '@angular/router';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
+
 import { SnackbarService, UserService } from '../../../services';
 
 @Component({
   selector: 'app-login-form',
   templateUrl: './login-form.component.html',
-  styleUrls: ['./login-form.component.scss']
+  styleUrls: ['./login-form.component.scss'],
 })
-export class LoginFormComponent implements OnInit {
-  readonly form = this._builder.group({
-    email   : [null, []],
-    password: [null, []]
+export class LoginFormComponent implements OnInit, OnDestroy {
+  readonly form = new FormGroup({
+    email: new FormControl('', []),
+    password: new FormControl('', []),
   });
 
-  constructor(private readonly _builder : FormBuilder,
-              private readonly _router  : Router,
-              private readonly _snackbar: SnackbarService,
-              private readonly _user    : UserService) { }
+  private readonly _subscription = new Subscription();
 
-  get email()    { return this.form.get('email')    as FormControl; }
-  get password() { return this.form.get('password') as FormControl; }
+  constructor(
+    private readonly _router: Router,
+    private readonly _snackbarService: SnackbarService,
+    private readonly _userService: UserService
+  ) {}
+
+  get email() {
+    return this.form.get('email') as FormControl;
+  }
+  get password() {
+    return this.form.get('password') as FormControl;
+  }
 
   ngOnInit() {
-    if (this._user.token) {
+    if (this._userService.token) {
       this._router.navigate(['/']).then();
-      this._snackbar.open('You are already logged in!');
+      this._snackbarService.open('You are already logged in!');
     }
+  }
+
+  ngOnDestroy() {
+    this._subscription.unsubscribe();
   }
 
   onSubmit() {
     if (this.form.valid) {
       this.form.disable();
 
-      this._user
-          .login(this.form.value)
-          .subscribe({
-            next: () => {
-              this.form.enable();
-              this._router.navigate(['/']).then();
-              this._snackbar.open('You have successfully logged in!');
-            },
-            error: err => {
-              this.form.enable();
-              this._snackbar.open('Invalid email or password!');
-              console.error(err);
-            }
-          });
+      this._subscription.add(
+        this._userService.login(this.form.value).subscribe({
+          next: () => {
+            this._router.navigate(['/']).then();
+            this._snackbarService.open('You have successfully logged in!');
+          },
+          error: (error) => {
+            console.error(error.message);
+            this._snackbarService.open('Invalid email or password!');
+          },
+          complete: () => {
+            this.form.enable();
+          },
+        })
+      );
     }
   }
 }
